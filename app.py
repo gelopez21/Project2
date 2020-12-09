@@ -21,9 +21,8 @@ mongo = PyMongo(app, uri="mongodb://gelopez21:Hershey*963.@localhost:27017/googl
 
 @app.route("/")
 def home():
-    google_collection = mongo.db.google_collection.find_one()
-    return render_template("index.html", google_collection=google_collection)
-
+    # google_collection = mongo.db.google_collection.find_one()
+    return render_template("index.html")
 # @app.route('/scrape')
 # def scrape():
 #     mars_results = ??.scrape()
