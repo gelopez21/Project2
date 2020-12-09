@@ -8,7 +8,6 @@ from flask import (
 import bson
 from bson.json_util import dumps
 
-# from flask import Flask, render_template, jsonify, redirect
 import pymongo
 from flask_pymongo import PyMongo
 
