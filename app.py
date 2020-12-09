@@ -18,7 +18,7 @@ app = Flask(__name__)
 # db = googleData_db
 # collection = db.google_collection
 client = pymongo.MongoClient()
-mongo = PyMongo(app, uri="mongodb://gelopez21:password@localhost:27017/googleData_db?ssl=true&authSource=admin&replicaSet=atlas-96tmk6-shard-0")
+mongo = PyMongo(app, uri="mongodb://gelopez21:Hershey*963.@localhost:27017/googleData_db?ssl=true&authSource=admin&replicaSet=atlas-96tmk6-shard-0")
 
 
 @app.route("/")
