@@ -11,14 +11,14 @@ from bson.json_util import dumps
 # from flask import Flask, render_template, jsonify, redirect
 import pymongo
 from flask_pymongo import PyMongo
-# import ??
+from config import password
 
 app = Flask(__name__)
 
 # db = googleData_db
 # collection = db.google_collection
 client = pymongo.MongoClient()
-mongo = PyMongo(app, uri="mongodb://localhost:27017/googleData_db")
+mongo = PyMongo(app, uri="mongodb://gelopez21:password@localhost:27017/googleData_db?ssl=true&authSource=admin&replicaSet=atlas-96tmk6-shard-0")
 
 
 @app.route("/")
