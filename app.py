@@ -11,7 +11,6 @@ from bson.json_util import dumps
 # from flask import Flask, render_template, jsonify, redirect
 import pymongo
 from flask_pymongo import PyMongo
-from config import password
 
 app = Flask(__name__)
 
