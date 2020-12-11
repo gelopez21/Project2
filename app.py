@@ -23,7 +23,7 @@ def home():
     return render_template("index.html")
 
 @app.route("/Poll")
-def poll()
+def poll():
     return render_template("poll.html")
 
 if __name__ == "__main__":
