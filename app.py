@@ -22,7 +22,9 @@ mongo = PyMongo(app, uri="mongodb://gelopez21:Hershey*963.@localhost:27017/googl
 def home():
     return render_template("index.html")
 
-
+@app.route("/Poll")
+def poll()
+    return render_template("poll.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

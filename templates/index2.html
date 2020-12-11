@@ -1,112 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-        <title>Trends in Google Search</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-        <link rel="stylesheet" href= "{{ url_for('static', filename='style.css') }}">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-        
-    </head>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="screen">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+  </head>
 
-    <body>
-	
-            <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-     
-  <div class="center">
-    <h1 class="animated"> USA's Trends in Google Search </h1>
-    <div class="description">
- 
-    </div>
-    <div class="controls">
-        
-        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC03/embed_loader.js"></script>
-        <script type="text/javascript">
-          trends.embed.renderWidget("US_cu_4Rjdh3ABAABMHM_en", "fe_line_chart_62098245-f9fd-43dc-8d8e-33a7ef01a3a5", {"guestPath":"https://trends.google.com:443/trends/embed/"});
-        </script>
-        <br>
-        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC03/embed_loader.js"></script>
-        <script type="text/javascript">
-          trends.embed.renderWidget("US_cu_4Rjdh3ABAABMHM_en", "fe_list_dc34ed0f-ecb9-43b4-825a-b60b3af97791", {"guestPath":"https://trends.google.com:443/trends/embed/"});
-        </script>
-      
-        <!-- <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC03/embed_loader.js"></script>
-        <script type="text/javascript">
-          trends.embed.renderWidget("US_cu_4Rjdh3ABAABMHM_en", "fe_line_chart_f1bbba84-eb9c-40fc-a696-f61f4d1fba14", {"guestPath":"https://trends.google.com:443/trends/embed/"});
-        </script>
-        <br>
-        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC03/embed_loader.js"></script>
-        <script type="text/javascript">
-          trends.embed.renderWidget("US_cu_4Rjdh3ABAABMHM_en", "fe_line_chart_78e742e6-bf57-4bf1-b59a-514b8d024c27", {"guestPath":"https://trends.google.com:443/trends/embed/"});
-        </script> -->
-      
-        
-      
-    <!-- <h7>By<strong> Lupita Lopez</strong></h7>
-    <br>
-    <h7>Project Two</h7> -->
-    <br>
-    <br>
-    <!-- <a class="navbar-brand" href='https://trends.google.com/trends/yis/2019/US/'>Google Trends</a>        
-            <h6>Utilize each of the categories of the trends from 2006 to 2011</h6>
-            <p>This project was aimed to practice Selenium to scrap data from the Google Trends page and pull images from Google Images using
-                    Google's API and put it in a MongoDB database.
-                    Plan to keep and utilize each of the categories of the trends and the 10 results in each category, and also want to
-                    try and scrape multiple years of Google trends.
-                    Once scraped and cleaned the html data and stored it in the database, will then use it in an interactive D3 js
-                    lollipop visualization.
-                    There will be 2 filters on the webpage: one for the year and one for the category of the trend.
-                    Each of the lollipop circles will be interactive with a mouseover popup that will have the name of the trend and a google
-                    image of the trend with the top related search query to the trend.</p>
-        <div>
-            <div>
-                    <div id="my_dataviz">{{products}}</div> -->
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+        <!-- Brand and toggle display -->
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+              <a class="navbar-brand" href="#" id="logo">Latitude</a>
             </div>
+          </div>
+          <!-- Nav links for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                 <li><a href="visualizations/temp.html">Max Temperature</a></li>
+                  <li><a href="visualizations/humidity.html">Humidity</a></li>
+                  <li><a href="visualizations/cloudiness.html">Cloudiness</a></li>
+                  <li><a href="visualizations/wind.html">Wind Speed</a></li>
+                </ul>
+              </li>
+              <li><a href="comparison.html">Comparison</a></li>
+              <li><a href="data.html">Data</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
         </div>
-        <div>
-                <div>Sources: All keywords by <a href='https://trends.google.com/trends/yis/2019/US/'>Google Trends</a></div>
-                <div>Available code here: <a href='https://github.com/rimhoho/Google-Search-Trend-in-USA'>Git Lab</a></div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- End of navbar -->
+    
+    <div class="container">
+        <section class="row">
+        <!-- The purpose of the project/ project description Content here -->
+          <div class="col-md-8">
+            <article class = "description-content">
+              <h1 class="description-header">Summary: Latitude vs. X</h1>
+              <img src="assets/images/Fig1.png" alt="" id="description-image"/>
+              <p>
+              
+              </p>
+            </article>
+          </div>
+  <!-- Image Nav -->
+        <div class="col-md-4">
+          <section id="imageNav-area"> 
+                <div class = "imageNav-content">
+                  <h2 class="imageNav-header">Visualizations</h2>
+                  <hr/>
+                  <div id="images">
+                    <a href="visualizations\temp.html">
+                      <img src="assets/images/Fig1.png" alt="" id="description-image" class = "imageNav-photo">
+                    </a>
+                    <a href="visualizations\humidity.html">
+                      <img src="assets/images/Fig2.png" alt="" id="description-image" class = "imageNav-photo">
+                    </a> 
+                    <a href="visualizations\cloudiness.html">
+                      <img src="assets/images/Fig3.png" alt="" id="description-image" class = "imageNav-photo">
+                    </a> 
+                    <a href="visualizations\wind.html"> 
+                    <img src="assets/images/Fig4.png" alt="" id="description-image" class = "imageNav-photo">
+                    </a>
+                  </div>
+                </div>
+          </section>
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://d3js.org/d3.v4.js"></script>
-        <script src="{{ url_for('static', filename='gtrends.js') }}"></script>
+      </section>
+    </div>
     
     <footer class="footer navbar-fixed-bottom">
         <div class="two-toned-footer-color"></div>
         <p class="text-muted text-muted-footer text-center">
           &copy; Copyright Lupita Lopez 2020
           <br>
-          Animations for the strong of heart, and weak of mind.
+          Please note that Google searches are only samples numbers in Google Trends, this is because Google handles billions of searches per day.
         </p>
       </footer>
-
+      <!-- End of footer -->
+      <!-- jQuery CDN -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      
     </body>
-</html>
+    </html>
+        
