@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <title>Google Trends</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+        <link rel="stylesheet" href= "{{ url_for('static', filename='googletrends.css') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+        
+    </head>
+	<body>
+        <nav>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid navbar-custom">
+                  <!-- Brand and toggle display -->
+                  <div class="row">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <div class="col-xs-9 phone-nav">
+                        <a class="navbar-brand" id="logo">ProjectDos</a>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                </nav>
+                <h1>The USA's Trends in Google</h1>
+                <h6>...</h6>
+                <h7>...</h7>
+                <h7>...</h7>
+            </nav>
+            <p>....</p>
+        <div>
+            <div>
+                    <div id="my_dataviz">{{products}}</div>
+            </div>
+        </div>
+        <div>
+                <div>Sources: All keywords by <a href='https://trends.google.com/trends/yis/2011/US/'>Google Trends</a></div>
+                <div>Available code here: <a href='https://github.com/rimhoho/Google-Search-Trend-in-USA'>Git Lab</a></div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="{{ url_for('static', filename='googletrends.js') }}"></script>
+
+        <script>
+            $.get("http://127.0.0.1:5000/", function (products) {
+                update(products)
+  });
+        </script>
+    <!-- Create a div where the graph will take place -->
+<div id="raw_data.js></div>
+
+<footer class="footer navbar-fixed-bottom">
+    <div class="two-toned-footer-color"></div>
+    <p class="text-muted text-muted-footer text-center">
+      &copy; Copyright Lupita Lopez 2020
+      <br>
+      Please note that Google searches are only samples numbers in Google Trends, this is because Google handles billions of searches per day.
+    </p>
+  </footer>
+  <!-- End of footer -->
+  <!-- jQuery CDN -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+    </body>
+</html>

@@ -16,7 +16,7 @@ import re, pymongo, time, pdb, itertools, requests, json
 from pymongo import MongoClient
 
 # def init_browser():
-#     driver = webdriver.Chrome('/Users/rachel_roundtree/Desktop/chromedriver\ 2') #download from here, https://chromedriver.chromium.org/downloads and use the path
+#     driver = webdriver.Chrome('/Users/Eres/Desktop/Project2/chromedriver\ 2') #download from here, https://chromedriver.chromium.org/downloads and use the path
 #     return driver
 def init_browser():
     prox = Proxy()
@@ -28,7 +28,7 @@ def init_browser():
     prox.add_to_capabilities(capabilities)
     
     options = webdriver.ChromeOptions()
-    options.binary_location = '/Users/rachel_roundtree/Desktop/chromedriver\ 2'
+    options.binary_location = '/Users/Eres/Desktop/Project2/chromedriver\ 2'
     # options.add_argument('headless')
     # set the window size
     options.add_argument('window-size=1881x1280')
@@ -39,7 +39,7 @@ def init_browser():
 
 def searches_lists(driver, collections):
     search_trend_urls = ['https://trends.google.com/trends/yis/' + year + '/US/' for year in collections]
-    # search_trend_urls = ['https://trends.google.com/trends/yis/2008/US/']
+    # search_trend_urls = ['https://trends.google.com/trends/yis/2020/US/']
     
     for each_year in search_trend_urls:
         time.sleep(2)

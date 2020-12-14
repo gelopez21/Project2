@@ -1,26 +1,39 @@
-from flask import Flask, request, jsonify, render_template, redirect
-import pandas as pd
-import pymongo
-from pymongo import MongoClient
-
-cluster = MongoClient('mongodb+srv://rimho:0000@cluster0-yehww.mongodb.net/test?retryWrites=true&w=majority')
-db = cluster['google_search_db']
-collections = [db[c] for c in ['2006', '2007', '2008', '2009', '2011']]
-documents =  [collection.find() for collection in collections]
+from flask import Flask, render_template, jsonify
+import psycopg2
+#from config import db_password
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
+
+# setup postgres connection
+conn = psycopg2.connect(f"dbname='gtdata_db' user='postgres' host='localhost' password='Hershey*963.'")
+
+#set up cursor
+
+cur = conn.cursor()
+
 @app.route("/")
 def home():
-    products = []
-    for document in documents:
-        for p in document:
-            products.append(p)
-    return render_template("googletrends.html", products=products)
+    return render_template("index.html")
 
-# @app.route("/about")
-# def about():
-#     print("Server received request for 'About' page...")
-#     return "Welcome to my 'About' page!"
+@app.route("/data")
+def data():
+    cur.execute("""SELECT * FROM gtrends_table""")
+    rows = cur.fetchall()
+
+    all_week = []
+    for row in rows:
+        
+        gtrends_dict = {"week": row[0],
+                        "weather": row[1],
+                        "coronavirus": row[2],
+                        "news": row[3],
+                        "music": row[4],
+                        "sports": row[5]}
+        all_week.append(gtrends_dict)
+
+    return jsonify(all_week)
+
 
 
 if __name__ == "__main__":
