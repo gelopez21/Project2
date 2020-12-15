@@ -19,6 +19,11 @@ from protobuf_to_dict import protobuf_to_dict
 from config import API_KEY, MONGO_URI, BROKER_URL, CELERY_RESULT_BACKEND
 
 app = Flask(__name__)
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
+mongo = PyMongo(app)
+db = client.stops
+
 app.config["MONGO_URI"] = MONGO_URI
 
 def make_celery(app):
@@ -36,8 +41,11 @@ def make_celery(app):
 
 celery = make_celery(app)
 
-mongo = PyMongo(app)
-db = mongo.db
+# mongo = PyMongo(app)
+# db = mongo.db
+# mongo  = PyMongo("localhost",27017); //with default server and port adress
+# DB db = client.getDB( "stops" );
+# DBCollection collection = db.getCollection("collection_stops");
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
