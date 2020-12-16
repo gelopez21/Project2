@@ -17,18 +17,19 @@ import celeryconfig
 from google.transit import gtfs_realtime_pb2
 from protobuf_to_dict import protobuf_to_dict
 
-from config import API_KEY, MONGO_URI, BROKER_URL, CELERY_RESULT_BACKEND
+from config import API_KEY
+# BROKER_URL, CELERY_RESULT_BACKEND
 
 app = Flask(__name__)
-conn = 'mongodb://localhost:27017'
+conn = 'mongodb://localhost:27017/stops.collection_stops'
+app.config["MONGO_URI"] = 'mongodb://localhost:27017/stops.collection_stops'
 client = pymongo.MongoClient(conn)
 mongo = PyMongo(app)
 db = client.stops
 
-app.config["MONGO_URI"] = MONGO_URI
 
 def make_celery(app):
-    celery = Celery(app.import_name, broker=BROKER_URL)
+    celery = Celery(app.import_name)
     celery.config_from_object(celeryconfig)
     celery.conf.update(app.config)
     TaskBase = celery.Task
@@ -42,8 +43,8 @@ def make_celery(app):
 
 celery = make_celery(app)
 
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
-            CELERY_RESULT_BACKEND=os.environ['REDIS_URL']) 
+# # app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
+#             CELERY_RESULT_BACKEND=os.environ['REDIS_URL']) 
 # mongo = PyMongo(app)
 # db = mongo.db
 # mongo  = PyMongo("localhost",27017); //with default server and port adress

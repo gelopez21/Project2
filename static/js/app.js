@@ -9,7 +9,7 @@ $('a#process_input').click(function() {
 
 /////////////////////////////////////////////////////////////////
 
-var map = L.eeGeo.map('map', eeGeo_api_key, {
+var map = L.eeGeo.map('map', eeGeo_api_key = '0903822487659f81a0471ca69b5eed36', {
   center: [40.7128,-74.0060],
   zoom: 15
 });
@@ -75,7 +75,7 @@ L.polyline(S_train, {color:'black', opacity: .7}).addTo(map);
 L.polyline(N_train, {color:'yellow', opacity: .75 }).addTo(map);
 L.polyline(Q_train, {color:'yellow', opacity: .75 }).addTo(map);
 L.polyline(R_train, {color:'yellow', opacity: .75 }).addTo(map);
-L.polyline(W_train, {color:'yellow', opacity: .75 }).attTo(map);
+// L.polyline(W_train, {color:'yellow', opacity: .75 }).attTo(map);
 });
 
 /////////////////////////////////////////////////////////////////

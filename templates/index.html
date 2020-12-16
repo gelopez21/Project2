@@ -14,22 +14,10 @@
   <style>
 
   </style>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 
 <body>
-  <!-- map -->
-  <div id="map"></div>
-
-  <!-- API key -->
-  <script type="text/javascript" src="config.js"></script>
-  
-  <!--d3-->
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  
-  <!-- JS -->
-  <script type="text/javascript" src="lat_lon_data.js"></script>
-  <script type="text/javascript" src="logic.js"></script>
 
   <div class="jumbotron jumbotron-fluid" style="background-image: url('https://image.shutterstock.com/image-photo/white-rectangle-mosaic-tiles-texture-260nw-1288815238.jpg');
   background-size: cover">
@@ -39,8 +27,8 @@
       <div class="jumbotron jumbotron-fluid">
           <div class="container">
               <h1 class="display-4">Thinking about traveling to the Big Apple in the future?</h1><br>
-              <p class="lead">Choose your train line and your stop to see when the next train is coming. Or, scroll down to see 
-                how late each train line has been today.
+              <p class="lead">Choose your train line and your stop to see when the next train is coming.
+                <br>Or, scroll down to see how late each train line has been today.
               </p>
           </div>
         <div class="row">
@@ -80,6 +68,18 @@
     <div class="container text-center">
       <div id="content" style="position: relative">
         <div id='map' style="height: 650px"></div>
+          <!-- map -->
+  <div id="map"></div>
+
+  <!-- API key -->
+  <script type="text/javascript" src="static/js/config.js"></script>
+  
+  <!--d3-->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- JS -->
+  <script type="text/javascript" src="static/js/lat_lon_data.js"></script>
+  <script type="text/javascript" src="static/js/logic.js"></script>
       </div>
       <h2 class="display-4">Total Train Delays Today by Line</h2>
       <div class="row" id="delays">
