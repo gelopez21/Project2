@@ -1,3 +1,4 @@
+import os
 import requests
 import pandas as pd
 import json
@@ -41,6 +42,8 @@ def make_celery(app):
 
 celery = make_celery(app)
 
+app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
+            CELERY_RESULT_BACKEND=os.environ['REDIS_URL']) 
 # mongo = PyMongo(app)
 # db = mongo.db
 # mongo  = PyMongo("localhost",27017); //with default server and port adress

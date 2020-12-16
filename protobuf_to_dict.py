@@ -1,8 +1,26 @@
+# -*- coding:utf-8 -*-
+import six
+import datetime
+
 from google.protobuf.message import Message
 from google.protobuf.descriptor import FieldDescriptor
+from google.protobuf.timestamp_pb2 import Timestamp
+
+__all__ = ["protobuf_to_dict", "TYPE_CALLABLE_MAP", "dict_to_protobuf",
+           "REVERSE_TYPE_CALLABLE_MAP"]
+
+Timestamp_type_name = 'Timestamp'
 
 
-__all__ = ["protobuf_to_dict", "TYPE_CALLABLE_MAP", "dict_to_protobuf", "REVERSE_TYPE_CALLABLE_MAP"]
+def datetime_to_timestamp(dt):
+    ts = Timestamp()
+    ts.FromDatetime(dt)
+    return ts
+
+
+def timestamp_to_datetime(ts):
+    dt = ts.ToDatetime()
+    return dt
 
 
 EXTENSION_CONTAINER = '___X'
@@ -12,20 +30,50 @@ TYPE_CALLABLE_MAP = {
     FieldDescriptor.TYPE_DOUBLE: float,
     FieldDescriptor.TYPE_FLOAT: float,
     FieldDescriptor.TYPE_INT32: int,
-    FieldDescriptor.TYPE_INT64: long,
+    FieldDescriptor.TYPE_INT64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_UINT32: int,
-    FieldDescriptor.TYPE_UINT64: long,
+    FieldDescriptor.TYPE_UINT64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_SINT32: int,
-    FieldDescriptor.TYPE_SINT64: long,
+    FieldDescriptor.TYPE_SINT64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_FIXED32: int,
-    FieldDescriptor.TYPE_FIXED64: long,
+    FieldDescriptor.TYPE_FIXED64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_SFIXED32: int,
-    FieldDescriptor.TYPE_SFIXED64: long,
+    FieldDescriptor.TYPE_SFIXED64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_BOOL: bool,
-    FieldDescriptor.TYPE_STRING: unicode,
-    FieldDescriptor.TYPE_BYTES: lambda b: b.encode("base64"),
+    FieldDescriptor.TYPE_STRING: six.text_type,
+    FieldDescriptor.TYPE_BYTES: six.binary_type,
     FieldDescriptor.TYPE_ENUM: int,
 }
+
+
+# from google.protobuf.message import Message
+# from google.protobuf.descriptor import FieldDescriptor
+
+
+# __all__ = ["protobuf_to_dict", "TYPE_CALLABLE_MAP", "dict_to_protobuf", "REVERSE_TYPE_CALLABLE_MAP"]
+
+
+# EXTENSION_CONTAINER = '___X'
+
+
+# TYPE_CALLABLE_MAP = {
+#     FieldDescriptor.TYPE_DOUBLE: float,
+#     FieldDescriptor.TYPE_FLOAT: float,
+#     FieldDescriptor.TYPE_INT32: int,
+#     FieldDescriptor.TYPE_INT64: long,
+#     FieldDescriptor.TYPE_UINT32: int,
+#     FieldDescriptor.TYPE_UINT64: long,
+#     FieldDescriptor.TYPE_SINT32: int,
+#     FieldDescriptor.TYPE_SINT64: long,
+#     FieldDescriptor.TYPE_FIXED32: int,
+#     FieldDescriptor.TYPE_FIXED64: long,
+#     FieldDescriptor.TYPE_SFIXED32: int,
+#     FieldDescriptor.TYPE_SFIXED64: long,
+#     FieldDescriptor.TYPE_BOOL: bool,
+#     FieldDescriptor.TYPE_STRING: unicode,
+#     FieldDescriptor.TYPE_BYTES: lambda b: b.encode("base64"),
+#     FieldDescriptor.TYPE_ENUM: int,
+# }
 
 
 def repeated(type_callable):
@@ -34,7 +82,6 @@ def repeated(type_callable):
 
 def enum_label_name(field, value):
     return field.enum_type.values_by_number[int(value)].name
-
 
 def protobuf_to_dict(pb, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=False):
     result_dict = {}
