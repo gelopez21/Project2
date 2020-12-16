@@ -14,6 +14,7 @@
   <style>
 
   </style>
+
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 
@@ -66,6 +67,10 @@
       </div>
     </div>
     <div class="container text-center">
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+      </script>
       <div id="content" style="position: relative">
         <div id='map' style="height: 650px"></div>
           <!-- map -->
@@ -78,7 +83,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
   <!-- JS -->
-  <script type="text/javascript" src="static/js/lat_lon_data.js"></script>
+  <script type="text/javascript" src="static/js/lat_lon_.js"></script>
   <script type="text/javascript" src="static/js/logic.js"></script>
       </div>
       <h2 class="display-4">Total Train Delays Today by Line</h2>
@@ -94,10 +99,7 @@
         Before you visit NYC, check out the Subway Trains.
       </p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous">
-  </script>
+
   <script src="{{ url_for('static', filename='js/config.js') }}"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
