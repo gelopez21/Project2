@@ -1,16 +1,16 @@
-$('a#process_input').click(function() {
-    $.getJSON('/display', {
-      line: $( "#lineform" ).val(),
-      stop: $( "#stopform" ).val()
-    }, function(result) {
-        $("div#trainfeed").prepend(result.data);
-      });
+$('a#process_input').click(function () {
+  $.getJSON('/display', {
+    line: $("#lineform").val(),
+    stop: $("#stopform").val()
+  }, function (result) {
+    $("div#trainfeed").prepend(result.data);
+  });
 });
 
 /////////////////////////////////////////////////////////////////
 
 var map = L.eeGeo.map('map', eeGeo_api_key = '0903822487659f81a0471ca69b5eed36', {
-  center: [40.7128,-74.0060],
+  center: [40.7128, -74.0060],
   zoom: 15
 });
 var my_icon = L.icon({
@@ -18,69 +18,67 @@ var my_icon = L.icon({
   iconSize: [15, 15],
 });
 
-d3.csv("/static/js/subway_stops.csv").then(function(stops_info) {
-  stops_info.forEach(function(data2) {
+d3.csv("/static/js/subway_stops.csv").then(function (stops_info) {
+  stops_info.forEach(function (data2) {
     data2.lat = +data2.lat;
     data2.lon = +data2.lon;
   })
-  stops_info.forEach(function(data2) {
-    L.marker([data2.lat,data2.lon],{icon: my_icon})
-    .bindPopup(`<p><strong> ${data2.NAME} <br /><hr></strong> ${data2.LINE} </p>`).addTo(map);
-    });
-    
-  setTimeout(function() {
-    map.setView([40.7128,-74.0060], 17, {headingDegrees: 204.374, tiltDegrees:15.0});
+  stops_info.forEach(function (data2) {
+    L.marker([data2.lat, data2.lon], { icon: my_icon })
+      .bindPopup(`<p><strong> ${data2.NAME} <br /><hr></strong> ${data2.LINE} </p>`).addTo(map);
+  });
+
+  setTimeout(function () {
+    map.setView([40.7128, -74.0060], 17, { headingDegrees: 204.374, tiltDegrees: 15.0 });
   }, 10000);
 
-// ONE TWO THREE
-L.polyline(one_train, {color:'red', opacity: .75}).addTo(map);
-L.polyline(Two_train, {color:'red' ,opacity: .75}).addTo(map);
-L.polyline(Three_train, {color:'red' ,opacity: .75}).addTo(map);
+  // ONE TWO THREE
+  L.polyline(one_train, { color: 'red', opacity: .75 }).addTo(map);
+  L.polyline(Two_train, { color: 'red', opacity: .75 }).addTo(map);
+  L.polyline(Three_train, { color: 'red', opacity: .75 }).addTo(map);
 
-// FOUR FIVE SIX
-L.polyline(Four_train, {color:'green', opacity: .75}).addTo(map);
-L.polyline(Five_train, {color:'green', opacity: 1}).addTo(map);
-L.polyline(Five_Point_5_train, {color:'green', opacity: 1}).addTo(map);
-L.polyline(Six_train, {color:'green', opacity: .75}).addTo(map);
+  // FOUR FIVE SIX
+  L.polyline(Four_train, { color: 'green', opacity: .75 }).addTo(map);
+  L.polyline(Five_train, { color: 'green', opacity: 1 }).addTo(map);
+  L.polyline(Five_Point_5_train, { color: 'green', opacity: 1 }).addTo(map);
+  L.polyline(Six_train, { color: 'green', opacity: .75 }).addTo(map);
 
-// SEVEN
-L.polyline(Seven_train, {color:'purple', opacity: .75}).addTo(map);
+  // SEVEN
+  L.polyline(Seven_train, { color: 'purple', opacity: .75 }).addTo(map);
 
-// ACE 
-L.polyline(A_train, {color:'blue', opacity: .75}).addTo(map);
-L.polyline(A_A_train, {color:'blue', opacity: .75}).addTo(map);
-L.polyline(C_train, {color:'blue', opacity: .75}).addTo(map);
-L.polyline(E_train, {color:'blue', opacity: 1}).addTo(map);
+  // ACE 
+  L.polyline(A_train, { color: 'blue', opacity: .75 }).addTo(map);
+  L.polyline(A_A_train, { color: 'blue', opacity: .75 }).addTo(map);
+  L.polyline(C_train, { color: 'blue', opacity: .75 }).addTo(map);
+  L.polyline(E_train, { color: 'blue', opacity: 1 }).addTo(map);
 
-// BDFM
-L.polyline(B_train, {color:'#FF8333', opacity: .85}).addTo(map);
-L.polyline(D_train, {color:'#FF8333', opacity: .85}).addTo(map);
-L.polyline(F_train, {color:'#FF8333', opacity: .85}).addTo(map);
-L.polyline(M_train, {color:'#FF8333', opacity: .85}).addTo(map);
+  // BDFM
+  L.polyline(B_train, { color: '#FF8333', opacity: .85 }).addTo(map);
+  L.polyline(D_train, { color: '#FF8333', opacity: .85 }).addTo(map);
+  L.polyline(F_train, { color: '#FF8333', opacity: .85 }).addTo(map);
+  L.polyline(M_train, { color: '#FF8333', opacity: .85 }).addTo(map);
 
-// JZ
-L.polyline(J_train, {color:'#3B250A', opacity: .85}).addTo(map);
-L.polyline(Z_train, {color:'#3B250A', opacity: .85}).addTo(map);
+  // JZ
+  L.polyline(J_train, { color: '#3B250A', opacity: .85 }).addTo(map);
+  L.polyline(Z_train, { color: '#3B250A', opacity: .85 }).addTo(map);
 
-// G
-L.polyline(G_train, {color:'#46FF33', opacity: .85}).addTo(map);
+  // G
+  L.polyline(G_train, { color: '#46FF33', opacity: .85 }).addTo(map);
 
-// L 
-L.polyline(L_train, {color:'black', opacity: .7}).addTo(map);
+  // L 
+  L.polyline(L_train, { color: 'black', opacity: .7 }).addTo(map);
 
-// S
-L.polyline(S_train, {color:'black', opacity: .7}).addTo(map);
+  // S
+  L.polyline(S_train, { color: 'black', opacity: .7 }).addTo(map);
 
-// NQRW
-L.polyline(N_train, {color:'yellow', opacity: .75 }).addTo(map);
-L.polyline(Q_train, {color:'yellow', opacity: .75 }).addTo(map);
-L.polyline(R_train, {color:'yellow', opacity: .75 }).addTo(map);
-// L.polyline(W_train, {color:'yellow', opacity: .75 }).attTo(map);
+  // NQRW
+  L.polyline(N_train, { color: 'yellow', opacity: .75 }).addTo(map);
+  L.polyline(Q_train, { color: 'yellow', opacity: .75 }).addTo(map);
+  L.polyline(R_train, { color: 'yellow', opacity: .75 }).addTo(map);
+  L.polyline(W_train, { color: 'yellow', opacity: .75 }).addTo(map);
 });
 
 /////////////////////////////////////////////////////////////////
-
-
 var svgWidth = 880;
 var svgHeight = 680;
 
@@ -105,60 +103,97 @@ var svg = d3.select("#delays")
   .attr("width", svgWidth);
 
 // Append a group to the SVG area and shift ('translate') it to the right and to the bottom
-var chartGroup = svg.append("g")
-  .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+// var chartGroup = svg.append("g")
+//   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+var margins = { top: 20, left: 100, bottom: 20, right: 20 };
+var width = 800;
+var height = 500;
+var totalWidth = width + margins.left + margins.right;
+var totalHeight = height + margins.top + margins.bottom;
 
-d3.json("/api/delays").then(function(delayData) {
-  var yScale = d3.scaleBand()
-    .domain(delayData.map(d => d.line))
-    .range([0, chartHeight])
-    .padding(0.1);
+var chartGroup = svg.append('g')
+  .attr('transform', "translate(" + margins.left + "," + margins.top + ")");
+var xScale = d3.scaleLinear()
+  .range([0, width]);
 
-  // Create a linear scale for the vertical axis.
-  var xScale = d3.scaleLinear()
-    .domain([d3.max(delayData, d => (d.count/60)), 0])
-    .range([chartWidth, 0]);
+var letmeseeit = d3.select("#process_input");
+letmeseeit.on("click", function () {
+
+
+  d3.json("/api/delays").then(function (delayData) {
   
-  var xAxisScale = d3.scaleLinear()
-    .domain([d3.min(delayData, d => (d.count/60)), d3.max(delayData, d => (d.count/60))])
-    .range([0, chartWidth]);
+    var inputTrain = d3.select("#lineform").property("value");
+    var inputStop = d3.select("#stopform").property("value");
+    console.log("inputTrain:", inputTrain);
+    console.log("inputStop:", inputStop);
+    console.log("delayData:", delayData);
+    var yScale = d3.scaleBand()
+      .domain(delayData.map(d => d.line))
+      .range([0, chartHeight])
+      .padding(0.1);
 
-  var bottomAxis = d3.axisBottom(xAxisScale).ticks(15);
-  var leftAxis = d3.axisLeft(yScale).tickSize(0);
+    // Create a linear scale for the vertical axis.
+    var xScale = d3.scaleLinear()
+      .domain([d3.max(delayData, d => (d.count / 60)), 0])
+      .range([chartWidth, 0]);
 
-  var toolTip = d3.tip()
-    .attr("class", "tooltip")
-    .offset([0, 10])
-    .html(function(d) {
-      return (`<strong>${d.line} Line<strong>: ${Math.round(d.count/60)} minutes`);
-    }
-  );
+    var xAxisScale = d3.scaleLinear()
+      .domain([d3.min(delayData, d => (d.count / 60)), d3.max(delayData, d => (d.count / 60))])
+      .range([0, chartWidth]);
 
-  svg.call(toolTip);
+    // var bottomAxis = d3.axisBottom(xAxisScale).ticks(15);
+    var xAxis = (d3.axisBottom(xScale))
+      //  d3.axisBottom(xAxisScale)
+      .tickValues(delayData.map(function (d) { return d.date; }))
+      .tickFormat(d3.timeFormat("%H:%M"));
 
-  chartGroup.selectAll(".bar")
-    .data(delayData)
-    .enter()
-    .append("rect")
-    .attr("class", "bar")
-    .attr("x", d => xAxisScale(Math.min(0, (d.count/60))))
-    .attr("y", d => yScale(d.line))
-    .attr("fill", d => d.color)
-    .attr("width", d => Math.abs(xAxisScale(d.count/60) - xAxisScale(0)))
-    .attr("height", yScale.bandwidth())
-    .attr("opacity", ".75")
-    .on('mouseover', toolTip.show)
-    .on('mouseout', toolTip.hide);
-  
-  chartGroup.append("g")
-    .attr("transform", `translate(${xAxisScale(0)}, 0)`)
-    .call(leftAxis);
+    var leftAxis = d3.axisLeft(yScale).tickSize(0);
 
-  chartGroup.append("g")
-    .attr("transform", `translate(0, ${chartHeight})`)
-    .call(bottomAxis);
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([0, 10])
+      .html(function (d) {
+        return (`<strong>${d.line} Line<strong>: ${Math.round(d.count / 60)} minutes`);
+      }
+      );
+
+    svg.call(toolTip);
+
+    chartGroup.selectAll(".bar")
+      .data(delayData)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => xAxisScale(Math.min(0, (d.count / 60))))
+      .attr("y", d => yScale(d.line))
+      .attr("fill", d => d.color)
+      .attr("width", d => Math.abs(xAxisScale(d.count / 60) - xAxisScale(0)))
+      .attr("height", yScale.bandwidth())
+      .attr("opacity", ".75")
+      .on('mouseover', toolTip.show)
+      .on('mouseout', toolTip.hide);
+
+    chartGroup.append('g')
+      .attr('class', 'x axis')
+      .attr('transform', "translate(" + 0 + "," + height + ")")
+      .call(d3.axisLeft(xScale))
+      .selectAll('text');
+
+    chartGroup.append('g')
+      .attr('class', 'y axis')
+      .call(d3.axisBottom(yScale))
+      .selectAll('text')
+      .attr("transform", "translate(-40,0)");
+    // chartGroup.append("g")
+    //   .attr("transform", `translate(${xAxisScale(0)}, 0)`)
+    //   .call(leftAxis);
+
+    // chartGroup.append("g")
+    //   .attr("transform", `translate(0, ${chartHeight})`)
+    //   .call(bottomAxis);
+  });
 });
 
 setTimeout(function () {
-  $( "#loading" ).remove();
+  $("#loading").remove();
 }, 11000);
