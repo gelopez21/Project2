@@ -239,7 +239,7 @@ def display():
         station = stops[stop]
         trips = collect(refresh(lines[line]))
         trains = find(trips, stop)
-        return jsonify({'data': render_template('trainfeed.html', trains=trains, stop=stop, station=station)})
+        return jsonify({'data': render_template('index.html', trains=trains, stop=stop, station=station)})
     except Exception as e:
         return str(e)
 
